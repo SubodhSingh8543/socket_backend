@@ -4,15 +4,14 @@ const data = require("./inputUpdates.json");
 const server = new WebSocket.Server({ port: 8080 });
 
 server.on('connection', socket => {
-    console.log('Client connected');
+    console.log('Connected to listener');
 
     let orders = data;
 
     const sendUpdates = (updates, delay) => {
         setTimeout(() => {
             updates.forEach(update => {
-                socket.send(JSON.stringify(update));
-                console.log(`Update sent to order book at ${new Date().toISOString()} for client ${update.ClientID} : ${JSON.stringify(update)}`)
+                socket.send(JSON.stringify({update,logs:`Update sent to order book at ${new Date().toISOString()} for client ${update.ClientID} : ${JSON.stringify(update)}`}));
             });
         }, delay);
     };
