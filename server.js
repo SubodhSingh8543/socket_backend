@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 const data = require("./inputUpdates.json");
 
-const server = new WebSocket.Server({ port: 8080 });
+const server = new WebSocket.Server({ port: 3001 });
 
 server.on('connection', socket => {
     console.log('Connected to listener');
@@ -22,4 +22,4 @@ server.on('connection', socket => {
     sendUpdates(orders.slice(70, 100), 11000);
 });
 
-console.log('WebSocket server started on port 8080');
+console.log('WebSocket server started');
