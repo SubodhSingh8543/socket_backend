@@ -7,7 +7,7 @@ server.on('connection', socket => {
     console.log('Connected to listener');
 
     let orders = data;
-
+    console.log(orders.length);
     const sendUpdates = (updates, delay) => {
         setTimeout(() => {
             updates.forEach(update => {
